@@ -4,7 +4,8 @@ import ytdl from 'ytdl-core'
 import axios from 'axios'
 import { youtubedl, youtubedlv2 } from '@bochilteam/scraper'
 let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) throw `*⚠️ INGRESE EL NOMBRE DE LA CANCIÓN QUE ESTÁ BUSCANDO*\n\n*💡 EJEMPLO*\n*${usedPrefix + command}* Another love`
+if (!text) throw `*𓊈🎧𓊉 𝙄𝙉𝙂𝙍𝙀𝙎𝘼 𝙀𝙇 𝙉𝙊𝙈𝘽𝙍𝙀 𝘿𝙀 𝙇𝘼 𝘾𝘼𝙉𝘾𝙄𝙊́𝙉 𝙌𝙐𝙀 𝙀𝙎𝙏𝘼𝙎 𝘽𝙐𝙎𝘾𝘼𝙉𝘿𝙊*\n\n𓊈🎧𓊉 ✪⃟🍓─────────────────╮
+𝐄𝐣𝐞𝐦𝐩𝐥𝐨: Play Another Love\n\v\v\v\v\v✪⃟🍓─────────────────╯\n*${usedPrefix + command}* Another love`
 m.react(done) 
 try {
 const yt_play = await search(args.join(" "))
@@ -13,29 +14,17 @@ if (command === 'play') {
 additionalText = 'AUDIO'
 } else if (command === 'play2') {
 additionalText = 'VIDEO'}
-let texto1 = `*∘ 📑 TÍTULO*
+let texto1 = `*∘ 📩 DESCARGANDO*
 ${yt_play[0].title}
-
-*∘ 📆 PUBLICADO:*
-${yt_play[0].ago}
 
 *∘ ⏰ DURACIÓN:* 
 ${secondString(yt_play[0].duration.seconds)}
-
- *∘ 👀 VISTAS*
-${MilesNumber(yt_play[0].views)}
 
 *∘ 👤 AUTOR*
 ${yt_play[0].author.name}
 
 *∘ 📍 CANAL*
 ${yt_play[0].author.url}
-
-*∘ 🗳️ ID*
-${yt_play[0].videoId}
-
-*∘ 🗂️ TIPO* 
-${yt_play[0].type}
 
 *∘ 📎 LINK*
 ${yt_play[0].url}
@@ -86,7 +75,7 @@ let infoo = await ytdl.getInfo('https://youtu.be/' + __res[0].videoId)
 let ress = await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
 conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })  
 } catch {
-await conn.reply(m.chat, '*⚠️ ERROR NO PUDE DESCARGAR EL AUDIO*', m)}}}}}
+await conn.reply(m.chat, '*[⚠️] ERROR NO PUDE DESCARGAR EL AUDIO*', m)}}}}}
 }  
 if (command == 'play2') {
 try {
@@ -112,7 +101,7 @@ let n3 = lolh.result.size
 let n4 = lolh.result.thumbnail
 await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `▢ 𝚃𝙸𝚃𝚄𝙻𝙾: ${n}\n▢ 𝙿𝙴𝚂𝙾 𝙳𝙴𝙻 𝚅𝙸𝙳𝙴𝙾: ${n3}`, thumbnail: await fetch(n4) }, { quoted: m })
 } catch {
-await conn.reply(m.chat, '*⚠️ NO FUE POSIBLE DESCARGAR EL VÍDEO*', m)}}}    
+await conn.reply(m.chat, '*[⚠️] NO FUE POSIBLE DESCARGAR EL VÍDEO*', m)}}}    
 }} catch {
 throw "*⚠️ ERROR, INTENTALO DE NUEVO*"}
 }

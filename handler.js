@@ -5,6 +5,7 @@ import { fileURLToPath } from 'url'
 import path, { join } from 'path'
 import { unwatchFile, watchFile } from 'fs'
 import chalk from 'chalk'
+import moment from 'moment-timezone'
 
 /**
  * @type {import('@whiskeysockets/baileys')}
@@ -104,8 +105,8 @@ export async function handler(chatUpdate) {
                     chat.welcome = true
                 if (!('detect' in chat))
                     chat.detect = false
-                if (!('detect2' in chat))
-                 chat.detect2 = true
+		if (!('detect2' in chat))
+                    chat.detect2 = true
                 if (!('sWelcome' in chat))
                     chat.sWelcome = ''
                 if (!('sBye' in chat))
@@ -135,8 +136,8 @@ export async function handler(chatUpdate) {
                 global.db.data.chats[m.chat] = {
                     isBanned: false,
                     welcome: true,
-                    detect: false, 
-                    detect2: true, 
+                    detect: false,
+	            detect2: true, 
                     sWelcome: '',
                     sBye: '',
                     sPromote: '',
@@ -517,9 +518,21 @@ export async function participantsUpdate({ id, participants, action }) {
                     } catch (e) {
                     } finally {
                     let apii = await this.getFile(pp)
-                        text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*') :
-                              (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0])
-this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
+			    text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@date', global.fecha).replace('@time', global.tiempo).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*') :
+                              (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
+			    let links = linkSity.getRandom()
+                            this.sendMessage(id, { text: text,
+ contextInfo:{
+ mentionedJid:[user],
+ "externalAdReply": {"showAdAttribution": true,
+ "containsAutoReply": true,
+ "title": `W E L C O M E`,
+"body": `${wm}`,
+ "previewType": "PHOTO",
+"thumbnailUrl": ``,
+"thumbnail": apii.data,
+"sourceUrl": links}}})
+			    //this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })          
                    }
                 }
             }
@@ -550,8 +563,8 @@ export async function groupsUpdate(groupsUpdate) {
         if (!id) continue
         let chats = global.db.data.chats[id], text = ''
         if (!chats?.detect) continue
-       // if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || 'Descripción cambiada a \n@desc').replace('@desc', groupUpdate.desc)
-      //  if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || 'El nombre del grupo cambió a \n@group').replace('@subject', groupUpdate.subject)
+        if (groupUpdate.desc) text = (chats.sDesc || this.sDesc || conn.sDesc || 'Descripción cambiada a \n@desc').replace('@desc', groupUpdate.desc)
+        if (groupUpdate.subject) text = (chats.sSubject || this.sSubject || conn.sSubject || 'El nombre del grupo cambió a \n@group').replace('@subject', groupUpdate.subject)
         if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || 'El icono del grupo cambió a').replace('@icon', groupUpdate.icon)
         if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || 'El enlace del grupo cambia a\n@revoke').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
@@ -598,19 +611,42 @@ export async function deleteUpdate(message) {
 }
 
 global.dfail = (type, m, conn) => {
+let foto = sityImg.getRandom()
     let msg = {
         rowner: '⚠️️ *ESTE COMANDO SOLO MI DESAROLLADOR LO PUEDE USAR*',
         owner: '⚠️ *ESTE COMANDO SOLO MI PROPIETARIO LO PUEDE USAR*',
         mods: '⚠️ *ESTA FUNCIÓN SOLO ES PARA MIS MODERADORES*',
         premium: '⚠️ *ESTA FUNCIÓN SOLO ES PARA USUARIOS PREMIUM*',
-        group: '⚠️ *¡¡¡LA FUNCIÓN SOLO PUEDE SER EJECUTADA EN GRUPOS!!!*',
-        private: '⚠️️ *¡¡¡LA FUNCIÓN SOLO PUEDE SER EJECUTADA EN EL CHAT PRIVADO DEL BOT!!!*',
+        group: '⚠️ *LA FUNCIÓN SOLO PUEDE SER EJECUTADA EN GRUPOS*',
+        private: '⚠️ *ESTA FUNCION SOLO PUEDE SER USADA EN EL CHAT PRIVADO*',
         admin: '⚠️️ *ESTE COMANDO SOLO PUEDE SER USADO POR ADMINS*',
-        botAdmin: '⚠️️ *¡¡¡PARA USAR ESTA FUNCIÓN DEBO SER ADMIN!!!*',
-        unreg: '⚠️ *REGÍSTRESE PARA USAR ESTA FUNCIÓN ESCRIBIENDO:*\n\n• */reg nombre.edad*\n\n*_💡 Ejemplo_* : */reg Undefined.17*',
-        restrict: '⚠️ *¡¡¡ESTA CARACTERÍSTICA ESTA DESACTIVADA!!!*'
+        botAdmin: '⚠️️ *PARA USAR ESTA FUNCIÓN DEBO SER ADMIN*',
+        unreg: '⚠️ *REGÍSTRESE PARA USAR ESTA FUNCIÓN ESCRIBIENDO:*\n\n• */reg nombre.edad*\n\n*_❕ Ejemplo_* : */reg Azami.25*',
+        restrict: '⚠️ *ESTA CARACTERÍSTICA ESTA DESACTIVADA*'
     }[type]
-    if (msg) return m.reply(msg)
+    if (msg) return conn.reply(m.chat, msg, m, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: '👋 Hola!!', body: ucapan(), sourceUrl: global.paypal, thumbnail: imagen1 }}})
+
+}
+
+function ucapan() {
+  const time = moment.tz('America/Los_Angeles').format('HH')
+  let res = "¿por qué no has dormido todavía?? 🥱"
+  if (time >= 4) {
+    res = "Buenos Días 🌄"
+  }
+  if (time >= 10) {
+    res = "Buenas Tardes ☀️"
+  }
+  if (time >= 15) {
+    res = "Buenas Noches 🌌"
+  }
+  if (time >= 18) {
+    res = "Buenas Madrugadas 🪐"
+  }
+  return res
+}
+function pickRandom(list) {
+     return list[Math.floor(Math.random() * list.length)]
 }
 
 let file = global.__filename(import.meta.url, true)

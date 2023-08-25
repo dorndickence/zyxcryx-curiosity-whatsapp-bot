@@ -2,7 +2,7 @@
 
 /* GitHub: https://github.com/Gatito-kw */
 
-/* Bot: https://github.com/Gatito-kw/nekobot-md */
+ /*Bot: https://github.com/Gatito-kw/nekobot-md */
 
 import {WAMessageStubType} from '@whiskeysockets/baileys'
 import fetch from 'node-fetch'
@@ -36,13 +36,11 @@ export async function before(m, {conn, participants, groupMetadata}) {
   }
    
   if (chat.detect2 && m.messageStubType == 27) {
-    let txt3 = `┏━━━━━━━━━━━━\n┃──〘`
-    txt3 += ` 💛 *WELCOME* 💛〙──\n┃━━━━━━━━━━━━\n┃ *_👀 @${m.messageStubParameters[0].split`@`[0]} bienvenid@ a_* `
+    let txt3 = `*• Hola, Gracias por unirte!!*\n*━━━━━━━━━━━━━━━━━━━*\n\n`
+    txt3 += `🍧 *• Nombre:* @user\n🗓️ *• Fecha:* @date\n⏰ *• Hora:* @time\n\n*`
     if (!m.sender.endsWith('@g.us')) {
-      txt3 += `\n┃ _*${groupName} ✨*_\n┃\n┃`
-      txt3 += ` *Fue aprobado por:* @${m.sender.split`@`[0]}\n┃ *_Puedes solicitar mi lista de_*\n┃ *_comandos con:_*\n┠⊷ *#menu*\n┃\n┃=> *_Aquí tienes la descripción_* \n┃ *_del grupo, léela!!_*\n┃\n\n${groupMetadata.desc?.toString() || '⚠️ No hay descripción!!'}\n\n┗━━━━━━━━━━━`
+      txt3 += `❕ *• Fue aprobado por:* @${m.sender.split`@`[0]}\n`
     } else {
-      txt3 += `\n┃*_Puedes solicitar mi lista de_*\n┃ *_comandos con:_*\n┠⊷ *#menu*\n┃\n┃=> *_Aquí tienes la descripción_* \n┃ *_del grupo, léela!!_*\n┃\n\n${groupMetadata.desc?.toString() || '⚠️ No hay descripción!!'}\n\n┗━━━━━━━━━━━`
     }
     await conn.sendMessage(m.chat, {image: pp, caption: txt3, mentions: mentionsContentM}, {quoted: fliveLoc})
   }
@@ -86,15 +84,15 @@ export async function before(m, {conn, participants, groupMetadata}) {
     let txt6 = `╔═══[ ${groupName} ]═══╗\n║╭──────────────\n║├⫹⫺ *Recientemente se han modificado los ajustes del grupo.*\n`
     txt6 += `║├⫹⫺ *El grupo se ha:* ${'```' + accion + '```'}\n`
     txt6 += `║├⫹⫺ *Ejecutado por:* @${m.sender.split`@`[0]}\n║╰──────────────\n╚══════════════════⋆`
-    await conn.sendMessage(m.chat, {text: txt6, mentions: [...txt6.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: {forwardingScore: 9999999, isForwarded: true, mentionedJid: [...txt6.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": md, "sourceUrl": yt}}});
-    //await conn.sendMessage(m.chat, {image: {url: pp}, caption: txt6, mentions: mentionsContentM}, {quoted: fliveLoc})
+   // await conn.sendMessage(m.chat, {text: txt6, mentions: [...txt6.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: {forwardingScore: 9999999, isForwarded: true, mentionedJid: [...txt6.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": md, "sourceUrl": yt}}});
+    await conn.sendMessage(m.chat, {image: {url: pp}, caption: txt6, mentions: mentionsContentM}, {quoted: fliveLoc})
   }
 
   if (chat.detect2 && m.messageStubType == 21) {
     let txt7 = `╔═══[ ${groupName} ]═══╗\n║╭──────────────\n║├⫹⫺ *Recientemente se ha cambiado el nombre del grupo.*\n`
     txt7 += `*║├⫹⫺ Nuevo nombre:* ${'```' + groupName + '```'}\n`
     txt7 += `*║├⫹⫺ Ejecutado por:* @${m.sender.split`@`[0]}\n║╰──────────────\n╚══════════════════⋆`
-    await conn.sendMessage(m.chat, {text: txt7, mentions: [...txt7.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: {forwardingScore: 9999999, isForwarded: true, mentionedJid: [...txt7.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": md, "sourceUrl": yt}}});
-    //await conn.sendMessage(m.chat, {image: {url: pp}, caption: txt7, mentions: mentionsContentM}, {quoted: fliveLoc})
+  //  await conn.sendMessage(m.chat, {text: txt7, mentions: [...txt7.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), contextInfo: {forwardingScore: 9999999, isForwarded: true, mentionedJid: [...txt7.matchAll(/@([0-9]{5,16}|0)/g)].map((v) => v[1] + '@s.whatsapp.net'), "externalAdReply": {"showAdAttribution": true, "containsAutoReply": true, "renderLargerThumbnail": true, "title": global.wm, "containsAutoReply": true, "mediaType": 1, "thumbnail": img, "mediaUrl": md, "sourceUrl": yt}}});
+    await conn.sendMessage(m.chat, {image: {url: pp}, caption: txt7, mentions: mentionsContentM}, {quoted: fliveLoc})
   }
-} /* Cierre del comando */
+}

@@ -50,8 +50,8 @@ para usuarios del heroku
 | **IMAGEMAGICK** | [click](https://github.com/DuckyTeam/heroku-buildpack-imagemagick) |
 
 ***
-### `ACTIVA EN TERMUX`
-- ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
+### `ACTIVAR EN TERMUX`
+> **Note** ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
 ```bash
 termux-setup-storage
 ```
@@ -65,7 +65,7 @@ pkg install -y git nodejs ffmpeg imagemagick && pkg install yarn
 ```
 
 ```bash
-git clone https://github.com/Undefined17/CuriosityBot-MD && cd CuriosityBot-MD && yarn install && npm install
+git clone https://github.com/AzamiJs/CuriosityBot-MD && cd CuriosityBot-MD && yarn install && npm install
 ```
 
 ```bash
@@ -74,6 +74,16 @@ ls
 
 ```bash
 npm start
+```
+
+### INSTALACIÓN AUTOMÁTICA POR TERMUX
+
+> **Note** Comandos para instalar de forma automática en Termux  
+```bash
+termux-setup-storage
+```
+```bash
+apt update -y && yes | apt upgrade && pkg install -y bash wget mpv && wget -O - https://raw.githubusercontent.com/AzamiJs/CuriosityBot-MD/master/curiosity.sh | bash
 ```
 
 ### `OBTENER OTRO CODIGO QR`
@@ -101,8 +111,13 @@ ESCRIBE LOS SIGUIENTES COMANDOS UNO POR UNO:
     <td align="center"><a href="https://github.com/GataNina-Li"><img src="https://github.com/gatanina-li.png?size=100" width="100px;" alt=""/><br /><sub><b>Gata Dios</b></sub></a><br /><sub><i>Desarolladora Oficial</i></sub></td>
     <td align="center"><a href="https://github.com/ReyEndymion"><img src="https://github.com/ReyEndymion.png?size=100" width="100px;" alt=""/><br /><sub><b>Endymion</b></sub></a><br /><sub><i>Desarollador Oficial</i></sub></td>
     <td align="center"><a href="https://github.com/HACHEJOTA"><img src="https://github.com/HACHEJOTA.png?size=100" width="100px;" alt=""/><br /><sub><b>HJ</b></sub></a><br /><sub><i>Desarollador Oficial</i></sub></td>
-    <td align="center"><a href="https://github.com/Aleixon127271"><img src="https://github.com/Aleixon127271.png?size=100" width="100px;" alt=""/><br /><sub><b>Aleixon</b></sub></a><br /><sub><i>Moderador</i></sub></td>
-    <td align="center"><a href="https://github.com/Ender-GB-Isis777"><img src="https://github.com/Ender-GB-Isis777.png?size=100" width="100px;" alt=""/><br /><sub><b>Ender GB</b></sub></a><br /><sub><i>Moderador 2</i></sub></td>
+   <td align="center"><a 
+  href="https://github.com/Aleixon127271"><img src="https://github.com/Aleixon127271.png?size=100" width="100px;" alt=""/><br /><sub><b>Aleixon</b></sub></a><br /><sub><i>Desarollador Oficial</i></sub></td>
+    <td align="center"><a href="https://github.com/Ender-GB-Isis777"><img src="https://github.com/Ender-GB-Isis777.png?size=100" width="100px;" alt=""/><br /><sub><b>Ender GB</b></sub></a><br /><sub><i>Desarrollador Oficial</i>
+    <td align="center"><a 
+    href="https://github.com/Aleixon127271"><img src="https://github.com/KimdanBot-MD.png?size=100" width="100px;" alt=""/><br /><sub><b>Jose.Ofc</b></sub></a><br /><sub><i>Desarollador oficial</i></sub></td> 
+    <td align="center"><a 
+    </sub></td>
   </tr>
 </table>
 
