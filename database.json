@@ -1,7 +1,7 @@
 {
   "users": {
     "51904354571@s.whatsapp.net": {
-      "exp": -1318,
+      "exp": -1282,
       "diamond": 9,
       "lastclaim": 0,
       "registered": false,
@@ -18,7 +18,7 @@
       "simi": false
     },
     "51955715506@s.whatsapp.net": {
-      "exp": 8663,
+      "exp": 8774,
       "diamond": -1,
       "lastclaim": 0,
       "registered": true,
@@ -447,7 +447,7 @@
       "simi": false
     },
     "120363032088909978@g.us": {
-      "exp": 2982,
+      "exp": 2989,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -824,7 +824,7 @@
       "simi": false
     },
     "50768899930@s.whatsapp.net": {
-      "exp": 15267,
+      "exp": 15293,
       "diamond": 2,
       "lastclaim": 0,
       "registered": false,
@@ -1045,7 +1045,7 @@
       "simi": false
     },
     "51989461561@s.whatsapp.net": {
-      "exp": 1382,
+      "exp": 1395,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -1793,7 +1793,7 @@
       "simi": false
     },
     "573108897276@s.whatsapp.net": {
-      "exp": 582,
+      "exp": 762,
       "diamond": 44,
       "lastclaim": 0,
       "registered": true,
@@ -4452,7 +4452,7 @@
       "simi": false
     },
     "59167219769@s.whatsapp.net": {
-      "exp": 546,
+      "exp": 549,
       "diamond": 20,
       "lastclaim": 0,
       "registered": true,
@@ -12907,7 +12907,7 @@
       "simi": false
     },
     "51993277288@s.whatsapp.net": {
-      "exp": 37,
+      "exp": 142,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -12918,7 +12918,7 @@
       "afkReason": "",
       "banned": false,
       "warn": 0,
-      "level": 0,
+      "level": 1,
       "role": "Novato",
       "autolevelup": true,
       "simi": false
@@ -13796,6 +13796,23 @@
       "lastclaim": 0,
       "registered": false,
       "name": "+51 961 468 138",
+      "age": -1,
+      "regTime": -1,
+      "afk": -1,
+      "afkReason": "",
+      "banned": false,
+      "warn": 0,
+      "level": 0,
+      "role": "Novato",
+      "autolevelup": true,
+      "simi": false
+    },
+    "5216567665322@s.whatsapp.net": {
+      "exp": 21,
+      "diamond": 20,
+      "lastclaim": 0,
+      "registered": false,
+      "name": ".",
       "age": -1,
       "regTime": -1,
       "afk": -1,
@@ -14780,10 +14797,10 @@
   },
   "stats": {
     "menu-menu.js": {
-      "total": 93,
-      "success": 93,
-      "last": 1693016015028,
-      "lastSuccess": 1693016015028
+      "total": 99,
+      "success": 99,
+      "last": 1693022955684,
+      "lastSuccess": 1693022955684
     },
     "rpg-verificar.js": {
       "total": 21,
@@ -14810,9 +14827,9 @@
       "lastSuccess": 1692978475049
     },
     "rpg-levelup.js": {
-      "total": 34,
+      "total": 35,
       "success": 7,
-      "last": 1693016180349,
+      "last": 1693023069870,
       "lastSuccess": 1692899259737
     },
     "sticker-sticker.js": {
@@ -14888,9 +14905,9 @@
       "lastSuccess": 0
     },
     "game-pregunta.js": {
-      "total": 16,
+      "total": 17,
       "success": 13,
-      "last": 1692987727747,
+      "last": 1693023149128,
       "lastSuccess": 1692987727747
     },
     "descargas-imagen.js": {
@@ -14966,10 +14983,10 @@
       "lastSuccess": 1692910748044
     },
     "grupo-kick.js": {
-      "total": 21,
-      "success": 21,
-      "last": 1693008640086,
-      "lastSuccess": 1693008640086
+      "total": 22,
+      "success": 22,
+      "last": 1693022849866,
+      "lastSuccess": 1693022849866
     },
     "grupo-link.js": {
       "total": 4,
@@ -15014,10 +15031,10 @@
       "lastSuccess": 1693015789810
     },
     "game-math.js": {
-      "total": 129,
-      "success": 121,
-      "last": 1693018104452,
-      "lastSuccess": 1693018104452
+      "total": 130,
+      "success": 122,
+      "last": 1693023089923,
+      "lastSuccess": 1693023089923
     },
     "rpg-work.js": {
       "total": 9,
@@ -15084,6 +15101,18 @@
       "success": 3,
       "last": 1693016337325,
       "lastSuccess": 1693016337325
+    },
+    "sticker-wm.js": {
+      "total": 2,
+      "success": 0,
+      "last": 1693022997364,
+      "lastSuccess": 0
+    },
+    "owner-leavegc.js": {
+      "total": 2,
+      "success": 2,
+      "last": 1693023117750,
+      "lastSuccess": 1693023117750
     }
   },
   "msgs": {},
@@ -15097,7 +15126,7 @@
       "antiCall": false,
       "antiPrivate": false,
       "modejadibot": true,
-      "status": 1693020105683
+      "status": 1693023160980
     }
   }
 }
