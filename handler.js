@@ -524,8 +524,9 @@ export async function participantsUpdate({ id, participants, action }) {
                             .replace('@subject', await this.getName(id))
                             .replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*'))
                             .replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
+                            this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })   
                     }
-                    this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
+                    //this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
                    }
                 }
             }
