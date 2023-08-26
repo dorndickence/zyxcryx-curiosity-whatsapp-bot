@@ -1,12 +1,12 @@
-import {canLevelUp, xpRange} from '../lib/levelling.js'
-import {levelup} from '../lib/canvas.js'
+import { canLevelUp, xpRange } from '../lib/levelling.js'
+import { levelup } from '../lib/canvas.js'
 
-let handler = async (m, {conn}) => {
-    let {role} = global.db.data.users[m.sender]
-    let name = conn.getName(m.sender)
-    let user = global.db.data.users[m.sender]
+let handler = async (m, { conn }) => {
+let { role } = global.db.data.users[m.sender]
+let name = conn.getName(m.sender)
+let user = global.db.data.users[m.sender]
     if (!canLevelUp(user.level, user.exp, global.multiplier)) {
-        let {min, xp, max} = xpRange(user.level, global.multiplier)
+        let { min, xp, max } = xpRange(user.level, global.multiplier)
         throw `
 »»» 「 ✨ NIVEL ✨ 」
 » *NOMBRE*
@@ -50,6 +50,6 @@ let handler = async (m, {conn}) => {
 handler.help = ['levelup']
 handler.tags = ['rg']
 
-handler.command = ['nivel', 'lvl', 'levelup', 'level']
+handler.command = ['nivel', 'lvl', 'levelup', 'level'] 
 
 export default handler

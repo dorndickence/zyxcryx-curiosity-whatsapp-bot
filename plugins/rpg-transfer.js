@@ -2,8 +2,7 @@ const items = [
     'limit', 'exp',
 ]
 let confirmation = {}
-
-async function handler(m, {conn, args, usedPrefix, command}) {
+async function handler(m, { conn, args, usedPrefix, command }) {
     if (confirmation[m.sender]) return m.reply('*⚠️ Estas haciendo una transferencia*')
     let user = global.db.data.users[m.sender]
     const item = items.filter(v => v in user && typeof user[v] == 'number')
@@ -33,7 +32,7 @@ Escriba: (si) para acertar
 Escriba: (no) para cancelar
 `.trim()
     let c = 'Azami - Curiosity'
-    await conn.reply(m.chat, confirm, m, {mentions: [who]})
+    await conn.reply(m.chat, confirm, m, { mentions: [who] })
     //conn.sendButton(m.chat, confirm, c, null, [['si'], ['no']], m, { mentions: [who] })
     confirmation[m.sender] = {
         sender: m.sender,
@@ -49,27 +48,27 @@ handler.before = async m => {
     if (m.isBaileys) return
     if (!(m.sender in confirmation)) return
     if (!m.text) return
-    let {timeout, sender, message, to, type, count} = confirmation[m.sender]
+    let { timeout, sender, message, to, type, count } = confirmation[m.sender]
     if (m.id === message.id) return
     let user = global.db.data.users[sender]
     let _user = global.db.data.users[to]
-    if (/^No|no$/i.test(m.text)) {
-        //if (/no?/g.test(m.text.toLowerCase())) {
+    if (/^No|no$/i.test(m.text) ) { 
+    //if (/no?/g.test(m.text.toLowerCase())) {
         clearTimeout(timeout)
         delete confirmation[sender]
         return m.reply('*Cancelado*')
     }
-    if (/^Si|si$/i.test(m.text)) {
-        // if (/si?/g.test(m.text.toLowerCase())) {
+    if (/^Si|si$/i.test(m.text) ) { 
+   // if (/si?/g.test(m.text.toLowerCase())) {
         let previous = user[type] * 1
         let _previous = _user[type] * 1
         user[type] -= count * 1
         _user[type] += count * 1
-        if (previous > user[type] * 1 && _previous < _user[type] * 1) m.reply(`✅ transferencia exitosa de \n\n*${count}* *${type}*  a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}`, null, {mentions: [to]})
+        if (previous > user[type] * 1 && _previous < _user[type] * 1) m.reply(`✅ transferencia exitosa de \n\n*${count}* *${type}*  a @${(to || '').replace(/@s\.whatsapp\.net/g, '')}`, null, { mentions: [to] })
         else {
             user[type] = previous
             _user[type] = _previous
-            m.reply(`Error al transferir *${count}* ${type} to *@${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, null, {mentions: [to]})
+            m.reply(`Error al transferir *${count}* ${type} to *@${(to || '').replace(/@s\.whatsapp\.net/g, '')}*`, null, { mentions: [to] })
         }
         clearTimeout(timeout)
         delete confirmation[sender]
@@ -78,7 +77,7 @@ handler.before = async m => {
 
 handler.help = ['transfer'].map(v => v + ' [tipo] [cantidad] [@tag]')
 handler.tags = ['rg']
-handler.command = ['payxp', 'transfer', 'darxp']
+handler.command = ['payxp', 'transfer', 'darxp'] 
 
 handler.disabled = false
 

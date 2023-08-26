@@ -3,17 +3,17 @@ let handler = async (m) => {
     if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
     else who = m.sender
     let fdoc = {
-        key: {
-            remoteJid: 'status@broadcast',
-            participant: '0@s.whatsapp.net'
-        },
-        message: {
-            documentMessage: {
-                title: wm,
-            }
-        }
-    }
-    m.reply(`*${global.db.data.users[who].diamond} Límite restante (⁠≧⁠▽⁠≦⁠)*`)
+  key : {
+  remoteJid: 'status@broadcast',
+  participant : '0@s.whatsapp.net'
+  },
+  message: {
+  documentMessage: {
+  title: wm, 
+                            }
+                          }
+                        }
+m.reply(`*${global.db.data.users[who].diamond} Límite restante (⁠≧⁠▽⁠≦⁠)*`)
 
 }
 handler.help = ['limit [@user]']
