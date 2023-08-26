@@ -517,9 +517,15 @@ export async function participantsUpdate({ id, participants, action }) {
                     } catch (e) {
                     } finally {
                     let apii = await this.getFile(pp)
-                        text = (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*')
-                              .replace('@user', '@' + user.split('@')[0])
-this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
+                    if (action === 'add') {
+                        text = ((chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!')
+                            .replace('@date', global.fecha)
+                            .replace('@time', global.tiempo)
+                            .replace('@subject', await this.getName(id))
+                            .replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*'))
+                            .replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
+                    }
+                    this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
                    }
                 }
             }
