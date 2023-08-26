@@ -1,21 +1,25 @@
-import { watchFile, unwatchFile } from 'fs'
+import fs, {unwatchFile, watchFile} from 'fs'
 import chalk from 'chalk'
-import fs from 'fs'
-import cheerio from 'cheerio'
-import fetch from 'node-fetch'
-import axios from 'axios'
-import path, { join } from 'path'
-import { fileURLToPath, pathToFileURL } from 'url'
-import moment from 'moment-timezone' 
-import { platform } from 'process'
-global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') { return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString() }; global.__dirname = function dirname(pathURL) { return path.dirname(global.__filename(pathURL, true)) }; global.__require = function require(dir = import.meta.url) { return createRequire(dir) }
+import path, {join} from 'path'
+import {fileURLToPath, pathToFileURL} from 'url'
+import {platform} from 'process'
+
+global.__filename = function filename(pathURL = import.meta.url, rmPrefix = platform !== 'win32') {
+    return rmPrefix ? /file:\/\/\//.test(pathURL) ? fileURLToPath(pathURL) : pathURL : pathToFileURL(pathURL).toString()
+};
+global.__dirname = function dirname(pathURL) {
+    return path.dirname(global.__filename(pathURL, true))
+};
+global.__require = function require(dir = import.meta.url) {
+    return createRequire(dir)
+}
 const __dirname = global.__dirname(import.meta.url)
 
 /*=========== OWNER ===========*/
 global.owner = [
- ['51955715506', 'Julius Sauco', true],
- ['51904264739', 'Amadeus Systems', true],
- ['51904354571', 'Zycryx Chat Bot', true]]
+    ['51955715506', 'Julius Sauco', true],
+    ['51904264739', 'Amadeus Systems', true],
+    ['51904354571', 'Zycryx Chat Bot', true]]
 
 global.animxscans = ['51955715506']
 global.suittag = ['51955715506']
@@ -29,7 +33,7 @@ global.dirP = raiz//+aniD
 global.authFile = join(__dirname, `sessions/`)
 global.authFileRespald = join(__dirname, `sesionRespaldo/`)
 global.temp = join(__dirname, 'tmp')
-global.media = raiz+'media/'
+global.media = raiz + 'media/'
 global.jadibts = join(__dirname, 'jadibts/')
 global.raiz = './storage/menus/Menu1.jpg'
 global.imagen1 = fs.readFileSync('./storage/menus/Menu1.jpg')
@@ -67,7 +71,7 @@ global.nn = 'https://chat.whatsapp.com/LCAUbkf5kUz7jSxO6FADMU' //Grupo ofc
 global.nnn = 'https://chat.whatsapp.com/J1R402WH1N0Hdl3S0NDEYu' //Curiosity global
 global.nnnn = 'https://chat.whatsapp.com/KLpYFsitkgzJ15YQxZrBqO' //colaboración multi bots
 global.nnnnn = 'https://chat.whatsapp.com/KlRcEfl8snBEEOA0JXzw5A' //enlace curiosity
-global.nna2 = 'J1R402WH1N0Hdl3S0NDEYu' 
+global.nna2 = 'J1R402WH1N0Hdl3S0NDEYu'
 global.linkSity = [yt, ig, md, paypal, git, nn]
 /*=========== NOMBRES ===========*/
 global.wm = '© CuriosityBot-MD'
@@ -80,14 +84,14 @@ global.vs = '1.0.2'
 global.library = 'Baileys'
 global.lenguaje = 'Español'
 global.jadibts = join(__dirname, 'jadibts/')
-global.menudi = ['⛶','❏','⫹⫺']
+global.menudi = ['⛶', '❏', '⫹⫺']
 
 /*=========== REACCIONES ===========*/
 global.rwait = '⌛'
 global.dmoji = '🤭'
 global.done = '✅'
-global.error = '❌' 
-global.xmoji = '🔥' 
+global.error = '❌'
+global.xmoji = '🔥'
 global.amoji = '👀'
 global.bmoji = '🍀'
 global.cmoji = '🚀'
@@ -103,35 +107,35 @@ global.fsizedoc = '99999999999999'
 global.fpagedoc = '999'
 
 /*=========== HORARIO ==========*/
-global.d = new Date(new Date + 3600000) 
- global.locale = 'es' 
- global.dia = d.toLocaleDateString(locale, { weekday: 'long' }) 
- global.fecha = d.toLocaleDateString('es', { day: 'numeric', month: 'numeric', year: 'numeric' }) 
- global.mes = d.toLocaleDateString('es', { month: 'long' }) 
- global.año = d.toLocaleDateString('es', { year: 'numeric' }) 
- global.tiempo = d.toLocaleString('en-US', { hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true })
+global.d = new Date(new Date + 3600000)
+global.locale = 'es'
+global.dia = d.toLocaleDateString(locale, {weekday: 'long'})
+global.fecha = d.toLocaleDateString('es', {day: 'numeric', month: 'numeric', year: 'numeric'})
+global.mes = d.toLocaleDateString('es', {month: 'long'})
+global.año = d.toLocaleDateString('es', {year: 'numeric'})
+global.tiempo = d.toLocaleString('en-US', {hour: 'numeric', minute: 'numeric', second: 'numeric', hour12: true})
 
 
 global.multiplier = 100 // Cuanto más alto, más difícil subir de nivel | The higher, The harder levelup 
 
 global.rpg = {
-  emoticon(string) {
-    string = string.toLowerCase()
-    let emot = {
-      level: '🏆',
-      limit: '💎',
-      exp: '🕹️'
+    emoticon(string) {
+        string = string.toLowerCase()
+        let emot = {
+            level: '🏆',
+            limit: '💎',
+            exp: '🕹️'
+        }
+        let results = Object.keys(emot).map(v => [v, new RegExp(v, 'gi')]).filter(v => v[1].test(string))
+        if (!results.length) return ''
+        else return emot[results[0][0]]
     }
-    let results = Object.keys(emot).map(v => [v, new RegExp(v, 'gi')]).filter(v => v[1].test(string))
-    if (!results.length) return ''
-    else return emot[results[0][0]]
-  }
 }
 
 
 let file = fileURLToPath(import.meta.url)
 watchFile(file, () => {
-  unwatchFile(file)
-  console.log(chalk.redBright("Update 'config.js'"))
-  import(`${file}?update=${Date.now()}`)
+    unwatchFile(file)
+    console.log(chalk.redBright("Update 'config.js'"))
+    import(`${file}?update=${Date.now()}`)
 })

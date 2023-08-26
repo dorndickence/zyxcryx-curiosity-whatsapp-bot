@@ -1,54 +1,51 @@
+let handler = async (m, {conn, usedPrefix, command}) => {
 
-import fetch from 'node-fetch'
-import axios from 'axios'
-let handler = async (m, { conn, usedPrefix, command }) => {
-	
-	if (!global.db.data.chats[m.chat].nsfw) throw `🚫 El grupo no admite contenido +18\n\nPara habilitar escriba \n*${usedPrefix}enable* nsfw`
+    if (!global.db.data.chats[m.chat].nsfw) throw `🚫 El grupo no admite contenido +18\n\nPara habilitar escriba \n*${usedPrefix}enable* nsfw`
     let user = global.db.data.users[m.sender].age
-    if (user < 15) throw m.reply(`😐 ᴇʀᴇs ᴍᴇɴᴏʀ ᴅᴇ ᴇᴅᴀᴅ! ᴠᴜᴇʟᴠᴇ ᴄᴜᴀɴᴅᴏ ᴛᴇɴɢᴀs ᴍᴀs ᴅᴇ 15 ᴀñᴏs`) 
-   
-m.react('🥵') 
-let type = (command).toLowerCase()
+    if (user < 15) throw m.reply(`😐 ᴇʀᴇs ᴍᴇɴᴏʀ ᴅᴇ ᴇᴅᴀᴅ! ᴠᴜᴇʟᴠᴇ ᴄᴜᴀɴᴅᴏ ᴛᴇɴɢᴀs ᴍᴀs ᴅᴇ 15 ᴀñᴏs`)
 
-switch (type) {
+    m.react('🥵')
+    let type = (command).toLowerCase()
 
-case 'ass':
-case 'culos':
-    let as = await conn.getFile(global.API('fgmods', '/api/nsfw/ass', { }, 'apikey'))
-    conn.sendFile(m.chat, as.data, 'img.jpg', `✅ Random ${command}`, m)
-    m.react(xmoji) 
-break
+    switch (type) {
 
-case 'boobs':
-case 'boobies':
-   let xb = await conn.getFile(global.API('fgmods', '/api/nsfw/boobs', { }, 'apikey'))
-   conn.sendFile(m.chat, xb.data, 'img.jpg', `✅ Random ${command}`, m)
-   m.react(xmoji) 
-break
+        case 'ass':
+        case 'culos':
+            let as = await conn.getFile(global.API('fgmods', '/api/nsfw/ass', {}, 'apikey'))
+            conn.sendFile(m.chat, as.data, 'img.jpg', `✅ Random ${command}`, m)
+            m.react(xmoji)
+            break
 
-case 'pussy':
-   let xp = await conn.getFile(global.API('fgmods', '/api/nsfw/pussy', { }, 'apikey'))
-   conn.sendFile(m.chat, xp.data, 'img.jpg', `✅ Random ${command}`, m)
-   m.react(xmoji) 
-break
+        case 'boobs':
+        case 'boobies':
+            let xb = await conn.getFile(global.API('fgmods', '/api/nsfw/boobs', {}, 'apikey'))
+            conn.sendFile(m.chat, xb.data, 'img.jpg', `✅ Random ${command}`, m)
+            m.react(xmoji)
+            break
 
-case 'lesbians':
-case 'lesbian':
-   let les = await conn.getFile(global.API('fgmods', '/api/nsfw/lesbian', { }, 'apikey'))
-   conn.sendFile(m.chat, les.data, 'img.jpg', `✅ Random ${command}`, m)
-   m.react(xmoji) 
-break
+        case 'pussy':
+            let xp = await conn.getFile(global.API('fgmods', '/api/nsfw/pussy', {}, 'apikey'))
+            conn.sendFile(m.chat, xp.data, 'img.jpg', `✅ Random ${command}`, m)
+            m.react(xmoji)
+            break
+
+        case 'lesbians':
+        case 'lesbian':
+            let les = await conn.getFile(global.API('fgmods', '/api/nsfw/lesbian', {}, 'apikey'))
+            conn.sendFile(m.chat, les.data, 'img.jpg', `✅ Random ${command}`, m)
+            m.react(xmoji)
+            break
 
 //case 'pack':
-case 'cosplay':
-	     let img = await conn.getFile(global.API('fgmods', '/api/nsfw/cosplay', {}, 'apikey'))
-        conn.sendFile(m.chat, img.data, 'img.jpg', `✅ Resultado 🤭`, m)
-	     m.react(xmoji) 
-	break
+        case 'cosplay':
+            let img = await conn.getFile(global.API('fgmods', '/api/nsfw/cosplay', {}, 'apikey'))
+            conn.sendFile(m.chat, img.data, 'img.jpg', `✅ Resultado 🤭`, m)
+            m.react(xmoji)
+            break
 
 
-default:
- }
+        default:
+    }
 }
 handler.help = ['ass', 'boobs', 'lesbian', 'pussy']
 handler.tags = ['nsfw']

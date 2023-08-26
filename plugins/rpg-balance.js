@@ -1,9 +1,9 @@
-let handler = async (m, {usedPrefix}) => {	
-let who
-if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
-else who = m.sender
-let name = conn.getName(who) 
-m.reply(`╭─╮─᤻─᳒─᤻᳒「░⃟⃜🍭ꪳ۫₎۬۟〬𝐁𝐀𝐋𝐀𝐍𝐂𝐄░⃟⃜🐾⁩」
+let handler = async (m, {usedPrefix}) => {
+    let who
+    if (m.isGroup) who = m.mentionedJid[0] ? m.mentionedJid[0] : m.sender
+    else who = m.sender
+    let name = conn.getName(who)
+    m.reply(`╭─╮─᤻─᳒─᤻᳒「░⃟⃜🍭ꪳ۫₎۬۟〬𝐁𝐀𝐋𝐀𝐍𝐂𝐄░⃟⃜🐾⁩」
 ├❥ᰰຼ💎⃟ᬽ៸ *Nombre:* ${name}
 ├❥ᰰຼ💎⃟ᬽ៸ *Diamante*: ${global.db.data.users[who].diamond} 💎
 ├❥ᰰຼ💎⃟ᬽ  *Exp:* ${global.db.data.users[who].exp}
@@ -18,5 +18,5 @@ m.reply(`╭─╮─᤻─᳒─᤻᳒「░⃟⃜🍭ꪳ۫₎۬۟〬𝐁𝐀�
 }
 handler.help = ['bal']
 handler.tags = ['rg']
-handler.command = ['bal', 'diamantes', 'diamond', 'balance'] 
+handler.command = ['bal', 'diamantes', 'diamond', 'balance']
 export default handler

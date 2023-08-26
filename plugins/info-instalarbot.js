@@ -1,6 +1,7 @@
-import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
-let handler  = async (m, { conn }) => {
-let texto = `
+import {generateWAMessageFromContent} from '@whiskeysockets/baileys'
+
+let handler = async (m, {conn}) => {
+    let texto = `
 ╭─────────────┈⊷
 │ *INSTALACIÓN DE CURIOSITYBOT-MD*
 ╰┬────────────┈⊷
@@ -21,10 +22,20 @@ let texto = `
   │> git clone https://github.com/Undefined17/CuriosityBot-MD && cd CuriosityBot-MD && yarn install && npm install 
   │> ls 
   │> npm start 
-  ╰────────────┈⊷` 
-let aa = { quoted: m, userJid: conn.user.jid }
-let prep = generateWAMessageFromContent(m.chat, { extendedTextMessage: { text: `${texto}`.trim(), contextInfo: { externalAdReply: { title: 'Azami ©', body: null, thumbnail: imagen2, sourceUrl: 'https://github.com/Undefined17/CuriosityBot-MD' }, mentionedJid: [m.sender] }}}, aa)
-conn.relayMessage(m.chat, prep.message, { messageId: prep.key.id, mentions: [m.sender] })  
+  ╰────────────┈⊷`
+    let aa = {quoted: m, userJid: conn.user.jid}
+    let prep = generateWAMessageFromContent(m.chat, {extendedTextMessage: {text: `${texto}`.trim(),
+            contextInfo: {
+                externalAdReply: {
+                    title: 'Azami ©',
+                    body: null,
+                    thumbnail: imagen2,
+                    sourceUrl: 'https://github.com/Undefined17/CuriosityBot-MD'
+                }, mentionedJid: [m.sender]
+            }
+        }
+    }, aa)
+    conn.relayMessage(m.chat, prep.message, {messageId: prep.key.id, mentions: [m.sender]})
 }
 handler.tags = ['main']
 handler.command = /^(instalarbot)/i

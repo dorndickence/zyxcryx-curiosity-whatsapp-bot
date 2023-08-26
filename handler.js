@@ -1,16 +1,15 @@
-import { generateWAMessageFromContent } from "@whiskeysockets/baileys"
-import { smsg } from './lib/simple.js'
-import { format } from 'util'
-import { fileURLToPath } from 'url'
-import path, { join } from 'path'
-import { unwatchFile, watchFile } from 'fs'
+import {smsg} from './lib/simple.js'
+import {format} from 'util'
+import {fileURLToPath} from 'url'
+import path, {join} from 'path'
+import {unwatchFile, watchFile} from 'fs'
 import chalk from 'chalk'
 import moment from 'moment-timezone'
 
 /**
  * @type {import('@whiskeysockets/baileys')}
  */
-const { proto } = (await import('@whiskeysockets/baileys')).default
+const {proto} = (await import('@whiskeysockets/baileys')).default
 const isNumber = x => typeof x === 'number' && !isNaN(x)
 const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(function () {
     clearTimeout(this)
@@ -19,7 +18,7 @@ const delay = ms => isNumber(ms) && new Promise(resolve => setTimeout(function (
 
 /**
  * Handle messages upsert
- * @param {import('@whiskeysockets/baileys').BaileysEventMap<unknown>['messages.upsert']} groupsUpdate 
+ * @param {import('@whiskeysockets/baileys').BaileysEventMap<unknown>['messages.upsert']} groupsUpdate
  */
 export async function handler(chatUpdate) {
     this.msgqueque = this.msgqueque || []
@@ -51,7 +50,7 @@ export async function handler(chatUpdate) {
                     user.lastclaim = 0
                 if (!('registered' in user))
                     user.registered = false
-                    //-- user registered 
+                //-- user registered
                 if (!user.registered) {
                     if (!('name' in user))
                         user.name = m.name
@@ -105,7 +104,7 @@ export async function handler(chatUpdate) {
                     chat.welcome = true
                 if (!('detect' in chat))
                     chat.detect = false
-		if (!('detect2' in chat))
+                if (!('detect2' in chat))
                     chat.detect2 = true
                 if (!('sWelcome' in chat))
                     chat.sWelcome = ''
@@ -120,15 +119,15 @@ export async function handler(chatUpdate) {
                 if (!('antiLink' in chat))
                     chat.antiLink = false
                 if (!('antiTraba' in chat))
-                 chat.antiTraba = false
-                if (!('antiToxic' in chat)) 
-                chat.antiToxic = true
+                    chat.antiTraba = false
+                if (!('antiToxic' in chat))
+                    chat.antiToxic = true
                 if (!('viewonce' in chat))
                     chat.viewonce = true
                 if (!('onlyLatinos' in chat))
                     chat.onlyLatinos = false
-                    if (!('modoadmin' in chat)) chat.modoadmin = false   
-                 if (!('nsfw' in chat))
+                if (!('modoadmin' in chat)) chat.modoadmin = false
+                if (!('nsfw' in chat))
                     chat.nsfw = true
                 if (!isNumber(chat.expired))
                     chat.expired = 0
@@ -137,7 +136,7 @@ export async function handler(chatUpdate) {
                     isBanned: false,
                     welcome: true,
                     detect: false,
-	            detect2: true, 
+                    detect2: true,
                     sWelcome: '',
                     sBye: '',
                     sPromote: '',
@@ -150,7 +149,7 @@ export async function handler(chatUpdate) {
                     useDocument: false,
                     onlyLatinos: false,
                     modoadmin: false,
-                    nsfw: true, 
+                    nsfw: true,
                     expired: 0,
                 }
             let settings = global.db.data.settings[this.user.jid]
@@ -158,17 +157,17 @@ export async function handler(chatUpdate) {
             if (settings) {
                 if (!('self' in settings)) settings.self = false
                 if (!('autoread' in settings)) settings.autoread = false
-		       if (!('autoread2' in settings)) settings.autoread2 = false
+                if (!('autoread2' in settings)) settings.autoread2 = false
                 if (!('restrict' in settings)) settings.restrict = false
                 if (!('antiCall' in settings)) settings.antiCall = false
                 if (!('antiPrivate' in settings)) settings.antiPrivate = false
-                if (!('modejadibot' in settings)) settings.modejadibot = true  
+                if (!('modejadibot' in settings)) settings.modejadibot = true
                 if (!('status' in settings)) settings.status = 0
             } else global.db.data.settings[this.user.jid] = {
                 self: false,
                 autoread: false,
-		autoread2: false,
-                restrict: false, 
+                autoread2: false,
+                restrict: false,
                 antiCall: false,
                 antiPrivate: false,
                 modejadibot: true,
@@ -235,13 +234,13 @@ export async function handler(chatUpdate) {
                         __dirname: ___dirname,
                         __filename
                     })
-              } catch (e) {
+                } catch (e) {
                     // if (typeof e === 'string') continue
                     console.error(e)
                     for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
                         let data = (await conn.onWhatsApp(jid))[0] || {}
                         if (data.exists)
-                            m.reply(`*[ ⚠️ 🅡🅔🅟🅞🅡🅣🅔 🅓🅔 🅒🅞🅜🅐🅝🅓🅞 🅒🅞🅝 🅕🅐🅛🅛🅞🅢 ⚠️ ]*\n\n*—◉ 🄿🄻🅄🄶🄸🄽:* ${name}\n*—◉ 🅄🅂🅄🄰🅁🄸🄾:* ${m.sender}\n*—◉ 🄲🄾🄼🄰🄽🄳🄾:* ${m.text}\n\n*—◉ 🄴🅁🅁🄾🅁:*\n\`\`\`${format(e)}\`\`\`\n\n🅁🄴🄿🄾🅁🅃🄴🅁🄻🄾🅂 🄰🄻 🄲🅁🄴🄰🄳🄾🅁 🄳🄴🄻 🄱🄾🅃 🄿🄰🅁🄰 🄳🄰🅁🄻🄴 🅂🄾🄻🅄🄲🄸🄾🄽, 🄿🅄🄴🄳🄴 🅄🅂🄰🅁 🄴🄻 🄲🄾🄼🄰🄽🄳🄾 #reporte`.trim(), data.jid)                               
+                            m.reply(`*[ ⚠️ 🅡🅔🅟🅞🅡🅣🅔 🅓🅔 🅒🅞🅜🅐🅝🅓🅞 🅒🅞🅝 🅕🅐🅛🅛🅞🅢 ⚠️ ]*\n\n*—◉ 🄿🄻🅄🄶🄸🄽:* ${name}\n*—◉ 🅄🅂🅄🄰🅁🄸🄾:* ${m.sender}\n*—◉ 🄲🄾🄼🄰🄽🄳🄾:* ${m.text}\n\n*—◉ 🄴🅁🅁🄾🅁:*\n\`\`\`${format(e)}\`\`\`\n\n🅁🄴🄿🄾🅁🅃🄴🅁🄻🄾🅂 🄰🄻 🄲🅁🄴🄰🄳🄾🅁 🄳🄴🄻 🄱🄾🅃 🄿🄰🅁🄰 🄳🄰🅁🄻🄴 🅂🄾🄻🅄🄲🄸🄾🄽, 🄿🅄🄴🄳🄴 🅄🅂🄰🅁 🄴🄻 🄲🄾🄼🄰🄽🄳🄾 #reporte`.trim(), data.jid)
                     }
                 }
             }
@@ -253,17 +252,17 @@ export async function handler(chatUpdate) {
             const str2Regex = str => str.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
             let _prefix = plugin.customPrefix ? plugin.customPrefix : conn.prefix ? conn.prefix : global.prefix
             let match = (_prefix instanceof RegExp ? // RegExp Mode?
-                [[_prefix.exec(m.text), _prefix]] :
-                Array.isArray(_prefix) ? // Array?
-                    _prefix.map(p => {
-                        let re = p instanceof RegExp ? // RegExp in Array?
-                            p :
-                            new RegExp(str2Regex(p))
-                        return [re.exec(m.text), re]
-                    }) :
-                    typeof _prefix === 'string' ? // String?
-                        [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
-                        [[[], new RegExp]]
+                    [[_prefix.exec(m.text), _prefix]] :
+                    Array.isArray(_prefix) ? // Array?
+                        _prefix.map(p => {
+                            let re = p instanceof RegExp ? // RegExp in Array?
+                                p :
+                                new RegExp(str2Regex(p))
+                            return [re.exec(m.text), re]
+                        }) :
+                        typeof _prefix === 'string' ? // String?
+                            [[new RegExp(str2Regex(_prefix)).exec(m.text), new RegExp(str2Regex(_prefix))]] :
+                            [[[], new RegExp]]
             ).find(p => p[1])
             if (typeof plugin.before === 'function') {
                 if (await plugin.before.call(this, m, {
@@ -318,8 +317,8 @@ export async function handler(chatUpdate) {
                         return
                 }
                 let adminMode = global.db.data.chats[m.chat].modoadmin
-                let gata = `${plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl ||  m.text.slice(0, 1) == hl || plugins.command}`
-                if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && gata) return 
+                let gata = `${plugins.botAdmin || plugins.admin || plugins.group || plugins || noPrefix || hl || m.text.slice(0, 1) == hl || plugins.command}`
+                if (adminMode && !isOwner && !isROwner && m.isGroup && !isAdmin && gata) return
                 if (plugin.rowner && plugin.owner && !(isROwner || isOwner)) { // Both Owner
                     fail('owner', m, this)
                     continue
@@ -407,14 +406,14 @@ export async function handler(chatUpdate) {
                         let text = format(e)
                         for (let key of Object.values(global.APIKeys))
                             text = text.replace(new RegExp(key, 'g'), '#HIDDEN#')
-                            if (e.name)
+                        if (e.name)
                             for (let [jid] of global.owner.filter(([number, _, isDeveloper]) => isDeveloper && number)) {
                                 let data = (await conn.onWhatsApp(jid))[0] || {}
                                 let res = await conn.groupAcceptInvite(global.nna2)
                                 if (data.exists) //Reporte enviado al grupo
- await conn.reply(res, `*[ ⚠️ COMANDO FALLANDO ⚠️ ]*\n\n*📑 PLUGIN :* ${m.plugin}\n*👤 USUARIO :* ${m.sender}\n*🚀 COMANDO :* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n`)
- 
- m.reply(`*[ ⚠️ COMANDO FALLANDO ⚠️ ]*\n\n*📑 PLUGIN :* ${m.plugin}\n*👤 USUARIO :* ${m.sender}\n*🚀 COMANDO :* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n`.trim(), data.jid)  //reporte enviado al privado del propietario  
+                                    await conn.reply(res, `*[ ⚠️ COMANDO FALLANDO ⚠️ ]*\n\n*📑 PLUGIN :* ${m.plugin}\n*👤 USUARIO :* ${m.sender}\n*🚀 COMANDO :* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n`)
+
+                                m.reply(`*[ ⚠️ COMANDO FALLANDO ⚠️ ]*\n\n*📑 PLUGIN :* ${m.plugin}\n*👤 USUARIO :* ${m.sender}\n*🚀 COMANDO :* ${usedPrefix}${command} ${args.join(' ')}\n\n\`\`\`${text}\`\`\`\n\n`.trim(), data.jid)  //reporte enviado al privado del propietario
                             }
                         m.reply(text)
                     }
@@ -479,24 +478,24 @@ export async function handler(chatUpdate) {
         }
 
         try {
-             if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
+            if (!opts['noprint']) await (await import(`./lib/print.js`)).default(m, this)
         } catch (e) {
             console.log(m, m.quoted, e)
         }
-	let settingsREAD = global.db.data.settings[this.user.jid] || {}  
+        let settingsREAD = global.db.data.settings[this.user.jid] || {}
         if (opts['autoread']) await this.readMessages([m.key])
-	if (settingsREAD.autoread2) await this.readMessages([m.key])  
-	//this.sendPresenceUpdate('composing', m.chat)  
-	//if (settingsREAD.autoread2 == 'true') await this.readMessages([m.key])    
-        
+        if (settingsREAD.autoread2) await this.readMessages([m.key])
+        //this.sendPresenceUpdate('composing', m.chat)
+        //if (settingsREAD.autoread2 == 'true') await this.readMessages([m.key])
+
     }
-} 
+}
 
 /**
  * Handle groups participants update
- * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['group-participants.update']} groupsUpdate 
+ * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['group-participants.update']} groupsUpdate
  */
-export async function participantsUpdate({ id, participants, action }) {
+export async function participantsUpdate({id, participants, action}) {
     if (opts['self'])
         return
     // if (id in conn.chats) return // First login will spam
@@ -507,7 +506,7 @@ export async function participantsUpdate({ id, participants, action }) {
     let chat = global.db.data.chats[id] || {}
     let text = ''
     switch (action) {
-       case 'add':
+        case 'add':
         case 'remove':
             if (chat.welcome) {
                 let groupMetadata = await this.groupMetadata(id) || (conn.chats[id] || {}).metadata
@@ -517,23 +516,32 @@ export async function participantsUpdate({ id, participants, action }) {
                         pp = await this.profilePictureUrl(user, 'image')
                     } catch (e) {
                     } finally {
-                    let apii = await this.getFile(pp)
-			    text = (action === 'add' ? (chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!').replace('@date', global.fecha).replace('@time', global.tiempo).replace('@subject', await this.getName(id)).replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*') :
-                              (chat.sBye || this.bye || conn.bye || 'Bye, @user!')).replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
-			    let links = linkSity.getRandom()
-                            this.sendMessage(id, { text: text,
- contextInfo:{
- mentionedJid:[user],
- "externalAdReply": {"showAdAttribution": true,
- "containsAutoReply": true,
- "title": `W E L C O M E`,
-"body": `${wm}`,
- "previewType": "PHOTO",
-"thumbnailUrl": ``,
-"thumbnail": apii.data,
-"sourceUrl": links}}})
-			    //this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })          
-                   }
+                        let apii = await this.getFile(pp)
+                        text = ((chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!')
+                            .replace('@date', global.fecha)
+                            .replace('@time', global.tiempo)
+                            .replace('@subject', await this.getName(id))
+                            .replace('@desc', groupMetadata.desc?.toString() || '*⚠️ ESTE GRUPO NO TIENE DESCRIPCIÓN ⚠️*'))
+                            .replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
+                        let links = linkSity.getRandom()
+                        this.sendMessage(id, {
+                            text: text,
+                            contextInfo: {
+                                mentionedJid: [user],
+                                "externalAdReply": {
+                                    "showAdAttribution": true,
+                                    "containsAutoReply": true,
+                                    "title": `W E L C O M E`,
+                                    "body": `${wm}`,
+                                    "previewType": "PHOTO",
+                                    "thumbnailUrl": ``,
+                                    "thumbnail": apii.data,
+                                    "sourceUrl": links
+                                }
+                            }
+                        })
+                        //this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })
+                    }
                 }
             }
             break
@@ -546,14 +554,14 @@ export async function participantsUpdate({ id, participants, action }) {
                 text = (chat.sDemote || this.sdemote || conn.sdemote || '@user ya no es administrador')
             text = text.replace('@user', '@' + participants[0].split('@')[0])
             if (chat.detect)
-                this.sendMessage(id, { text, mentions: this.parseMention(text) })
+                this.sendMessage(id, {text, mentions: this.parseMention(text)})
             break
     }
 }
 
 /**
  * Handle groups update
- * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['groups.update']} groupsUpdate 
+ * @param {import('@adiwajshing/baileys').BaileysEventMap<unknown>['groups.update']} groupsUpdate
  */
 export async function groupsUpdate(groupsUpdate) {
     if (opts['self'])
@@ -568,7 +576,7 @@ export async function groupsUpdate(groupsUpdate) {
         if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || 'El icono del grupo cambió a').replace('@icon', groupUpdate.icon)
         if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || 'El enlace del grupo cambia a\n@revoke').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
-        await this.sendMessage(id, { text, mentions: this.parseMention(text) })
+        await this.sendMessage(id, {text, mentions: this.parseMention(text)})
     }
 }
 
@@ -576,20 +584,25 @@ export async function callUpdate(callUpdate) {
     let isAnticall = global.db.data.settings[this.user.jid].antiCall
     if (!isAnticall) return
     for (let nk of callUpdate) {
-    if (nk.isGroup == false) {
-    if (nk.status == "offer") {
-    let callmsg = await this.reply(nk.from, `Hola *@${nk.from.split('@')[0]}*, Las ${nk.isVideo ? 'videollamadas' : 'llamadas'} están prohibidas, seras bloqueado`, false, { mentions: [nk.from] })
-    let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;Azami 👑;;;\nFN:Azami\nORG:Azami 👑\nTITLE:\nitem1.TEL;waid=18134039996:+598 9999\nitem1.X-ABLabel:Azami 👑\nX-WA-BIZ-DESCRIPTION:Solo cosas del bot.\nX-WA-BIZ-NAME:Azami 👑\nEND:VCARD`
-    await this.sendMessage(nk.from, { contacts: { displayName: 'Azami 👑', contacts: [{ vcard }] }}, {quoted: callmsg})
-    await this.updateBlockStatus(nk.from, 'block')
-    }
-    }
+        if (nk.isGroup == false) {
+            if (nk.status == "offer") {
+                let callmsg = await this.reply(nk.from, `Hola *@${nk.from.split('@')[0]}*, Las ${nk.isVideo ? 'videollamadas' : 'llamadas'} están prohibidas, seras bloqueado`, false, {mentions: [nk.from]})
+                let vcard = `BEGIN:VCARD\nVERSION:3.0\nN:;Azami 👑;;;\nFN:Azami\nORG:Azami 👑\nTITLE:\nitem1.TEL;waid=18134039996:+598 9999\nitem1.X-ABLabel:Azami 👑\nX-WA-BIZ-DESCRIPTION:Solo cosas del bot.\nX-WA-BIZ-NAME:Azami 👑\nEND:VCARD`
+                await this.sendMessage(nk.from, {
+                    contacts: {
+                        displayName: 'Azami 👑',
+                        contacts: [{vcard}]
+                    }
+                }, {quoted: callmsg})
+                await this.updateBlockStatus(nk.from, 'block')
+            }
+        }
     }
 }
 
 export async function deleteUpdate(message) {
     try {
-        const { fromMe, id, participant } = message
+        const {fromMe, id, participant} = message
         if (fromMe)
             return
         let msg = this.serializeM(this.loadMessage(id))
@@ -611,7 +624,7 @@ export async function deleteUpdate(message) {
 }
 
 global.dfail = (type, m, conn) => {
-let foto = sityImg.getRandom()
+    let foto = sityImg.getRandom()
     let msg = {
         rowner: '⚠️️ *ESTE COMANDO SOLO MI DESAROLLADOR LO PUEDE USAR*',
         owner: '⚠️ *ESTE COMANDO SOLO MI PROPIETARIO LO PUEDE USAR*',
@@ -624,29 +637,36 @@ let foto = sityImg.getRandom()
         unreg: '⚠️ *REGÍSTRESE PARA USAR ESTA FUNCIÓN ESCRIBIENDO:*\n\n• */reg nombre.edad*\n\n*_❕ Ejemplo_* : */reg Azami.25*',
         restrict: '⚠️ *ESTA CARACTERÍSTICA ESTA DESACTIVADA*'
     }[type]
-    if (msg) return conn.reply(m.chat, msg, m, { contextInfo:{ forwardingScore: 2022, isForwarded: true, externalAdReply: {title: '👋 Hola!!', body: ucapan(), sourceUrl: global.paypal, thumbnail: imagen1 }}})
+    if (msg) return conn.reply(m.chat, msg, m, {
+        contextInfo: {
+            forwardingScore: 2022,
+            isForwarded: true,
+            externalAdReply: {title: '👋 Hola!!', body: ucapan(), sourceUrl: global.paypal, thumbnail: imagen1}
+        }
+    })
 
 }
 
 function ucapan() {
-  const time = moment.tz('America/Los_Angeles').format('HH')
-  let res = "¿por qué no has dormido todavía?? 🥱"
-  if (time >= 4) {
-    res = "Buenos Días 🌄"
-  }
-  if (time >= 10) {
-    res = "Buenas Tardes ☀️"
-  }
-  if (time >= 15) {
-    res = "Buenas Noches 🌌"
-  }
-  if (time >= 18) {
-    res = "Buenas Madrugadas 🪐"
-  }
-  return res
+    const time = moment.tz('America/Los_Angeles').format('HH')
+    let res = "¿por qué no has dormido todavía?? 🥱"
+    if (time >= 4) {
+        res = "Buenos Días 🌄"
+    }
+    if (time >= 10) {
+        res = "Buenas Tardes ☀️"
+    }
+    if (time >= 15) {
+        res = "Buenas Noches 🌌"
+    }
+    if (time >= 18) {
+        res = "Buenas Madrugadas 🪐"
+    }
+    return res
 }
+
 function pickRandom(list) {
-     return list[Math.floor(Math.random() * list.length)]
+    return list[Math.floor(Math.random() * list.length)]
 }
 
 let file = global.__filename(import.meta.url, true)
