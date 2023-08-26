@@ -69,9 +69,11 @@ export async function before(m, {conn, participants, groupMetadata}) {
     if (ax === 'eliminado') {
       txt5 += ` *⚠️ Se eliminó a:* @${m.messageStubParameters[0].split`@`[0]}\n┃`
       txt5 += ` *⚠️ Ejecutado por:* @${m.sender.split`@`[0]}\n┃No vuelva a agrega a esa sucia rata 🐁\n┗━━━━━━━━━━`;
-    } else {
-      txt5 += ` *😿 Se fue:* @${m.messageStubParameters[0].split`@`[0]}\n┃ *_Que dios lo bendiga️_*\n┃ *_Y lo atropelle un tren 😇_*\n┗━━━━━━━━━━`
-    }
+    } 
+    
+    //else {
+      //txt5 += ` *😿 Se fue:* @${m.messageStubParameters[0].split`@`[0]}\n┃ *_Que dios lo bendiga️_*\n┃ *_Y lo atropelle un tren 😇_*\n┗━━━━━━━━━━`
+    //}
     await conn.sendMessage(m.chat, {image: {url: pp}, caption: txt5, mentions: mentionsContentM}, {quoted: fliveLoc})
   }
 
