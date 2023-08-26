@@ -65,8 +65,9 @@ export async function before(m, {conn, participants, groupMetadata}) {
     } else {
       ax = 'eliminado'
     }
-    let txt5 = `┏━━━━━━━━━━━━\n┃──〘  ${groupName} 〙───\n┃━━━━━━━━━━━━\n┃`
+
     if (ax === 'eliminado') {
+      let txt5 = `┏━━━━━━━━━━━━\n┃──〘  ${groupName} 〙───\n┃━━━━━━━━━━━━\n┃`
       txt5 += ` *⚠️ Se eliminó a:* @${m.messageStubParameters[0].split`@`[0]}\n┃`
       txt5 += ` *⚠️ Ejecutado por:* @${m.sender.split`@`[0]}\n┃No vuelva a agrega a esa sucia rata 🐁\n┗━━━━━━━━━━`;
     } 

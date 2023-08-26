@@ -1,7 +1,7 @@
 {
   "users": {
     "51904354571@s.whatsapp.net": {
-      "exp": -1282,
+      "exp": -1267,
       "diamond": 9,
       "lastclaim": 0,
       "registered": false,
@@ -18,7 +18,7 @@
       "simi": false
     },
     "51955715506@s.whatsapp.net": {
-      "exp": 8774,
+      "exp": 8893,
       "diamond": -1,
       "lastclaim": 0,
       "registered": true,
@@ -171,7 +171,7 @@
       "simi": false
     },
     "573168651649@s.whatsapp.net": {
-      "exp": 10968,
+      "exp": 11068,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -243,7 +243,7 @@
       "simi": false
     },
     "120363047594830918@g.us": {
-      "exp": 238,
+      "exp": 242,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -294,7 +294,7 @@
       "simi": false
     },
     "51928456041@s.whatsapp.net": {
-      "exp": 4915,
+      "exp": 5028,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -447,7 +447,7 @@
       "simi": false
     },
     "120363032088909978@g.us": {
-      "exp": 2989,
+      "exp": 2990,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -654,7 +654,7 @@
       "simi": false
     },
     "18498786569@s.whatsapp.net": {
-      "exp": 2377,
+      "exp": 2466,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -824,7 +824,7 @@
       "simi": false
     },
     "50768899930@s.whatsapp.net": {
-      "exp": 15293,
+      "exp": 15521,
       "diamond": 2,
       "lastclaim": 0,
       "registered": false,
@@ -1113,7 +1113,7 @@
       "simi": false
     },
     "16363100815@s.whatsapp.net": {
-      "exp": 5817,
+      "exp": 5933,
       "diamond": 20,
       "lastclaim": 0,
       "registered": true,
@@ -1351,7 +1351,7 @@
       "simi": false
     },
     "51927782393@s.whatsapp.net": {
-      "exp": 2782,
+      "exp": 2824,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -1793,7 +1793,7 @@
       "simi": false
     },
     "573108897276@s.whatsapp.net": {
-      "exp": 762,
+      "exp": 771,
       "diamond": 44,
       "lastclaim": 0,
       "registered": true,
@@ -2032,7 +2032,7 @@
       "simi": false
     },
     "5217841406550@s.whatsapp.net": {
-      "exp": 6195,
+      "exp": 6217,
       "diamond": 132,
       "lastclaim": 1692765958126,
       "registered": true,
@@ -4435,7 +4435,7 @@
       "simi": false
     },
     "59160667106@s.whatsapp.net": {
-      "exp": 187,
+      "exp": 206,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -12907,7 +12907,7 @@
       "simi": false
     },
     "51993277288@s.whatsapp.net": {
-      "exp": 142,
+      "exp": 157,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -13536,7 +13536,7 @@
       "simi": false
     },
     "573102267201@s.whatsapp.net": {
-      "exp": 29,
+      "exp": 86,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -13774,7 +13774,7 @@
       "simi": false
     },
     "51955715506-1636142357@g.us": {
-      "exp": 4,
+      "exp": 6,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
@@ -13808,11 +13808,28 @@
       "simi": false
     },
     "5216567665322@s.whatsapp.net": {
-      "exp": 21,
+      "exp": 44,
       "diamond": 20,
       "lastclaim": 0,
       "registered": false,
       "name": ".",
+      "age": -1,
+      "regTime": -1,
+      "afk": -1,
+      "afkReason": "",
+      "banned": false,
+      "warn": 0,
+      "level": 0,
+      "role": "Novato",
+      "autolevelup": true,
+      "simi": false
+    },
+    "51974401181@s.whatsapp.net": {
+      "exp": 23,
+      "diamond": 20,
+      "lastclaim": 0,
+      "registered": false,
+      "name": "🦉",
       "age": -1,
       "regTime": -1,
       "afk": -1,
@@ -14893,10 +14910,10 @@
       "lastSuccess": 1693018158274
     },
     "descargas-play.js": {
-      "total": 71,
-      "success": 71,
-      "last": 1692989377367,
-      "lastSuccess": 1692989377367
+      "total": 72,
+      "success": 72,
+      "last": 1693024094275,
+      "lastSuccess": 1693024094275
     },
     "descargas-tiktok.js": {
       "total": 2,
@@ -15126,7 +15143,7 @@
       "antiCall": false,
       "antiPrivate": false,
       "modejadibot": true,
-      "status": 1693023160980
+      "status": 1693024421225
     }
   }
 }
