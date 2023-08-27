@@ -517,7 +517,7 @@ export async function participantsUpdate({ id, participants, action }) {
                     } catch (e) {
                     } finally {
                     let apii = await this.getFile(pp)
-                    if (action === 'add') {
+                    if ('add'=== action ) {
                         text = ((chat.sWelcome || this.welcome || conn.welcome || 'Welcome, @user!')
                             .replace('@date', global.fecha)
                             .replace('@time', global.tiempo)
@@ -526,7 +526,6 @@ export async function participantsUpdate({ id, participants, action }) {
                             .replace('@user', '@' + user.split('@')[0]).replace('@date', global.fecha).replace('@time', global.tiempo)
                             this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })   
                     }
-                    //this.sendFile(id, apii.data, 'pp.jpg', text, null, false, { mentions: [user] })                             
                    }
                 }
             }
