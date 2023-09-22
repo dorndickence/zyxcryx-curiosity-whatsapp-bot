@@ -1,1 +1,5 @@
-jadints
+<?php
+
+$short_options = "Jadibots";
+
+?>

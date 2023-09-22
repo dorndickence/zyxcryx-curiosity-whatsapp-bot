@@ -1,7 +1,5 @@
 import fs from 'fs'
 let handler = async (m, { conn, usedPrefix, command, args, isOwner, isAdmin, isROwner }) => {
-let fkontak = { "key": { "participants":"0@s.whatsapp.net", "remoteJid": "status@broadcast", "fromMe": false, "id": "Halo" }, "message": { "contactMessage": { "vcard": `BEGIN:VCARD\nVERSION:3.0\nN:Sy;Bot;;;\nFN:y\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabel:Ponsel\nEND:VCARD` }}, "participant": "0@s.whatsapp.net" }
-let fkontak2 = { key: { participant: '0@s.whatsapp.net' }, message: { contactMessage: { displayName: azami, vcard: `BEGIN:VCARD\nVERSION:3.0\nN:XL;${author},;;;\nFN:${author},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, jpegThumbnail: fs.readFileSync('./storage/menus/Menu1.jpg'), thumbnail: fs.readFileSync('./storage/menus/Menu1.jpg'), sendEphemeral: true }}}
 let isEnable = /true|enable|(turn)?on|1/i.test(command)
 let chat = global.db.data.chats[m.chat]
 let user = global.db.data.users[m.sender]
@@ -35,7 +33,7 @@ global.dfail('admin', m, conn)
 throw false
 }}
 chat.simi = isEnable
-break   
+break
 case 'detect':
 if (!m.isGroup) {
 if (!isOwner) {
@@ -50,15 +48,15 @@ chat.detect = isEnable
 break
 case 'detect2':
 if (!m.isGroup) {
-      if (!isOwner) {
-  global.dfail('group', m, conn);
-    throw false;
-    }} else if (!isAdmin) {
-  global.dfail('admin', m, conn);
-   throw false;
- }
-chat.detect2 = isEnable;
-  break;
+if (!isOwner) {
+global.dfail('group', m, conn)
+throw false
+}} else if (!isAdmin) {
+global.dfail('admin', m, conn)
+throw false
+}
+chat.detect2 = isEnable
+ break
 case 'delete':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
@@ -105,7 +103,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.antiLink2 = isEnable 
+chat.antiLink2 = isEnable
 break
 case 'antitraba':
 if (m.isGroup) {
@@ -114,7 +112,7 @@ global.dfail('admin', m, conn)
 throw false
 }}
 chat.antitraba = isEnable
-break 
+break
 case 'antitoxic':
 if (m.isGroup) {
 if (!(isAdmin || isOwner)) {
@@ -129,7 +127,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.modohorny = isEnable          
+chat.modohorny = isEnable
 break
 case 'autosticker':
 if (m.isGroup) {
@@ -137,7 +135,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.autosticker = isEnable          
+chat.autosticker = isEnable
 break
 case 'audios':
 if (m.isGroup) {
@@ -145,7 +143,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.audios = isEnable          
+chat.audios = isEnable
 break
 case 'restrict':
 isAll = true
@@ -198,8 +196,8 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.modoadmin = isEnable          
-break    
+chat.modoadmin = isEnable
+break
 case 'pconly':
 case 'privateonly':
 isAll = true
@@ -225,7 +223,7 @@ if (!(isAdmin || isOwner)) {
 global.dfail('admin', m, conn)
 throw false
 }}
-chat.nsfw = isEnable          
+chat.nsfw = isEnable
 break
 case 'antiprivado':
 isAll = true
@@ -250,7 +248,7 @@ if (!/[01]/.test(command)) return await conn.reply(m.chat, `╔───𖥻 LIS
 │ H O L A 😸❤️
 │⚌⚌⚌⚌⚌⚌⚌⚌⚌
 │
-│ *LISTA DE OPCIONES* 📄
+│ *LISTA DE OPCIONES ENABLE Y DISABLE* 📄
 │
 │➵ _${usedPrefix}enable *welcome*_
 │➵ _${usedPrefix}disable *welcome*_
@@ -286,17 +284,18 @@ if (!/[01]/.test(command)) return await conn.reply(m.chat, `╔───𖥻 LIS
 │➵ _${usedPrefix}disable *modoadmin*_
 │➵ _${usedPrefix}enable *modoadmin*_
 │➵ _${usedPrefix}disable *modejadibot*_
-╚───𖥻 LISTA 𖥻───╝`, fkontak, m)
+╚───𖥻 LISTA 𖥻───╝`, fpay, m)
 throw false
 }
 conn.reply(m.chat, `╔───𖥻 ON-OFF 𖥻───╗
-│ *OPCIÓN:* ${type} 
-│ *ESTADO*: ${isEnable ? 'Activado' : 'Desactivado'}
-│ *PARA*: ${isAll ? 'Este bot' : isUser ? '' : 'Este chat'}
+│ *OPCIÓN🗒️:* ${type}
+│ *ESTADO🗯️*: ${isEnable ? 'Activado' : 'Desactivado'}
+│ *PARA🎐*: ${isAll ? 'Este bot' : isUser ? '' : 'Este chat'}
 ╚───𖥻 ON-OFF 𖥻───╝`, fliveLoc, m)
 
 }
 handler.help = ['en', 'dis'].map(v => v + 'able <option>')
 handler.tags = ['nable', 'owner']
 handler.command = /^((en|dis)able|(tru|fals)e|(turn)?o(n|ff)|[01])$/i
+
 export default handler

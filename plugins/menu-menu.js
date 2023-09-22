@@ -26,7 +26,8 @@ let uptime = clockString(_uptime)
 
 let pp = await conn.profilePictureUrl(conn.user.jid).catch(_ => 'https://telegra.ph/file/24fa902ead26340f3df2c.png')
 let fkontak = { key: { fromMe: false, participant: `0@s.whatsapp.net`, ...(m.chat ? { remoteJid: `status@broadcast` } : {}) }, message: { 'contactMessage': { 'displayName': wm, 'vcard': `BEGIN:VCARD\nVERSION:3.0\nN:XL;${wm},;;;\nFN:${wm},\nitem1.TEL;waid=${m.sender.split('@')[0]}:${m.sender.split('@')[0]}\nitem1.X-ABLabell:Ponsel\nEND:VCARD`, 'jpegThumbnail': fs.readFileSync('./storage/menus/Menu3.jpg'), thumbnail: fs.readFileSync('./storage/menus/Menu3.jpg'),sendEphemeral: true}}}
-const ftrol = {
+let links = linkSity.getRandom()
+    const ftrol = {
     key : {
     remoteJid: 'status@broadcast',
     participant : '0@s.whatsapp.net'
@@ -38,7 +39,7 @@ const ftrol = {
     surface : 1,
     message: `Hola ${name}!`, 
     orderTitle: `▮Menu ▸`,
-    thumbnail: await (await fetch(pp)).buffer(), //Gambarnye
+    thumbnail: await (await fetch(pp)).buffer(),
     sellerJid: '0@s.whatsapp.net' 
     }
     }
@@ -51,8 +52,8 @@ let d4 = 'application/pdf'
 let d5 = 'application/vnd.android.package-archive'
 let d6 = 'application/zip'
 let td = `${pickRandom([d1,d2,d3,d4,d5,d6])}`
- 
- const fload = {
+    
+    const fload = {
     key : {
     remoteJid: 'status@broadcast',
     participant : '0@s.whatsapp.net' 
@@ -298,7 +299,7 @@ return _0x1a2b8a;
 }
 let buttonMessage = {
     'document': {
-        'url': ig
+        'url': md,
     },
     'mimetype': td,
     'fileName': 'D A S H B O A R D',
@@ -312,14 +313,14 @@ let buttonMessage = {
             'title': 'Hola!!',
             'thumbnail': fs.readFileSync('./storage/menus/Menu1.jpg'),
             'renderLargerThumbnail': !![],
-            'sourceUrl': ig
+            'sourceUrl': md
         }
     },
   'caption': menu['trim']()
 }
 await conn[_0x110137(0x1ba)](m[_0x110137(0x1b5)], buttonMessage, { 'quoted': fkontak })
 } catch {
-conn.reply(m.chat, '*⚠️ EL MENU TIENE UN ERROR PRUEBE CON EL MENUCOMPLETO: (.menucompleto)*', m)
+conn.reply(m.chat, '*⚠️ EL MENU TIENE UN ERROR PRUEBE CON EL MENU COMPLETO: (.menucompleto)*', fpoll, m)
 }}
 handler.tags = ['main']
 handler.command = /^(menu)$/i
