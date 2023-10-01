@@ -24,4 +24,5 @@ await conn.groupParticipantsUpdate(m.chat, [m.sender],'remove')
 } else if (!bot.restrict) return m.reply(`*⚠️ MI PROPIETARIO DEBE TENER EL MODO RESTRINGIDO ACTIVO*`)
 }
 return !0
+
 }

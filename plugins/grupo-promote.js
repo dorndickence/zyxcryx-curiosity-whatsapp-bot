@@ -1,4 +1,5 @@
-let handler = async (m, { conn,usedPrefix, text }) => {
+var handler = async (m, { conn,usedPrefix, text }) => {
+
 if(isNaN(text) && !text.match(/@/g)){
 	
 }else if(isNaN(text)) {
@@ -20,14 +21,15 @@ var user = number + '@s.whatsapp.net'
 } catch (e) {
 } finally {
 conn.groupParticipantsUpdate(m.chat, [user], 'promote')
-conn.reply(m.chat, `*[🍓] EXITO, AHORA TIENES PODER EN ESTE GRUPO*`, m)
-	
-}}
-handler.help = ['*521xxx*','*@usuario*','*responder chat*'].map(v => 'promote ' + v)
-handler.tags = ['group']
+conn.reply(m.chat, `*✅ EXITO, AHORA TIENE PODER EN ESTE GRUPO*`, m)}
+
+}
+handler.help = ['promote']
+handler.tags = ['grupo']
 handler.command = /^(promote|daradmin|darpoder)$/i
 handler.group = true
 handler.admin = true
 handler.botAdmin = true
 handler.fail = null
+
 export default handler

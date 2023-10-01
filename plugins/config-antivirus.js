@@ -11,6 +11,8 @@ sender: m.sender
 await this.modifyChat(m.chat, 'clear', {
 includeStarred: false
 }).catch(console.log)
-}}
+}
+
+}
 
 export default handler

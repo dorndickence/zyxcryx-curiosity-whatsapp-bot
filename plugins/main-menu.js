@@ -5,7 +5,7 @@ import fetch from 'node-fetch'
 import { xpRange } from '../lib/levelling.js'
 //import { plugins } from '../lib/plugins.js'
 let tags = {
-  'main': 'I N F O R M A C I Ó N ',
+/*  'main': 'I N F O R M A C I Ó N ',
   'group': 'G R U P O S',
   'game': 'J U E G O S',
   'dl': ' D E S C A R G A S',
@@ -19,7 +19,7 @@ let tags = {
   'tools': 'H E R R A M I E N T A S', 
   'anime': 'A N I M E', 
   'nsfw': 'N S F W +18', 
-  'owner': 'O W N E R', 
+  'owner': 'O W N E R', */
 }
 const defaultMenu = {
   before: `╔═══[ ＵＳＵＡＲＩＯＳ ]═══╗
@@ -44,10 +44,10 @@ const defaultMenu = {
 ╔═════「 ＨＯＹ 」════╗
 ║⫹⫺ *Fecha :* %date
 〬╚═════ ≪ •❈• ≫ ═════╝
-%readmore
+
 `.trimStart(),
   header: '╔══「 %category 」═╗',
-  body: '║ႌ〬⫹⫺  %cmd %isdiamond %isPremium',
+  body: '║ႌ〬⫹⫺  %cmd',
   footer: '╚════ ≪ •❈• ≫ ════╝\n',
   after: `
 `,
@@ -149,7 +149,7 @@ let handler = async (m, { conn, usedPrefix: _p, __dirname }) => {
     }
     text = text.replace(new RegExp(`%(${Object.keys(replace).sort((a, b) => b.length - a.length).join`|`})`, 'g'), (_, name) => '' + replace[name])
     
-    let pp = './storage/img/Menu2.jpg'
+    let pp = './storage/logos/Menu2.jpg'
     // await conn.reply(m.chat, '*Enviando el menu . . .*', ftrol) 
     conn.sendFile(m.chat, pp, 'menu.jpg', text.trim(), m, null, nnn)
     /*conn.sendButton(m.chat, text.trim(), '▢ DyLux  ┃ ᴮᴼᵀ\n▢ Sígueme en Instagram\nhttps://www.instagram.com/fg98_ff', pp, [

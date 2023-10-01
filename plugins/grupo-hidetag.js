@@ -1,6 +1,8 @@
 import { generateWAMessageFromContent } from '@whiskeysockets/baileys'
 import * as fs from 'fs'
-let handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
+
+var handler = async (m, { conn, text, participants, isOwner, isAdmin }) => {
+
 try {  
 let users = participants.map(u => conn.decodeJid(u.id))
 let q = m.quoted ? m.quoted : m || m.text || m.sender
@@ -35,8 +37,14 @@ var mediax = await quoted.download?.()
 conn.sendMessage(m.chat, {sticker: mediax, mentions: users}, { quoted: m })
 } else {
 await conn.relayMessage(m.chat, {extendedTextMessage:{text: `${masss}\n${htextos}\n`, ...{ contextInfo: { mentionedJid: users, externalAdReply: { thumbnail: img14, sourceUrl: md }}}}}, {})
-}}}
+}}
+
+}
+handler.help = ['hidetag']
+handler.tags = ['grupo']
 handler.command = /^(hidetag|notificar|notify)$/i
 handler.group = true
 handler.admin = true
+handler.botAdmin = true
+
 export default handler

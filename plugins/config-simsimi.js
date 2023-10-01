@@ -30,6 +30,7 @@ await m.reply(resu2[0][0][0])}
 return !0
 }
 return true
+
 }
 
 export default handler

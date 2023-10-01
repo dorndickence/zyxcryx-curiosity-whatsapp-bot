@@ -9,7 +9,6 @@ let bot = global.db.data.settings[this.user.jid] || {}
 let delet = m.key.participant
 let bang = m.key.id
 let name = await conn.getName(m.sender)
-let fakemek = {key: {participant: "0@s.whatsapp.net","remoteJid": "0@s.whatsapp.net"},"message": {"groupInviteMessage": {"groupJid": "51995386439-1616969743@g.us","inviteCode": "m","groupName": "P", "caption": 'CuriosityBot-MD', 'jpegThumbnail': null}}}
 if (chat.antiTraba && m.text.length > 5000) { //Cantidad máxima de caracteres aceptados en un mensaje//
 if (isAdmin) return conn.sendMessage(m.chat, { text: `El administrador @${m.sender.split("@")[0]} acaba de enviar un texto que contiene muchos caracteres -.-!`, mentions: [m.sender] }, { quoted: fakemek })
 await conn.sendMessage(m.chat, `*⚠️ Se detecto un mensaje que contiene muchos caracteres ⚠️*\n`, `${isBotAdmin ? '' : 'No soy administrador, no puedo hacer nada :/'}`, m);
@@ -24,4 +23,5 @@ conn.groupParticipantsUpdate(m.chat, [m.sender], 'remove')
 } else if (!bot.restrict) return m.reply(`*⚠️ MI PROPIETARIO DEBE TENER EL MODO RESTRINGIDO ACTIVO*`)
 }
 return !0
+
 }

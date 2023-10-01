@@ -1,12 +1,13 @@
-import fetch from "node-fetch"
-import yts from "yt-search"
+import fetch from 'node-fetch'
+import yts from 'yt-search'
 import ytdl from 'ytdl-core'
 import axios from 'axios'
 import { youtubedl, youtubedlv2 } from '@bochilteam/scraper'
-let handler = async (m, { conn, command, args, text, usedPrefix }) => {
-if (!text) throw `*𓊈🎧𓊉 𝙄𝙉𝙂𝙍𝙀𝙎𝘼 𝙀𝙇 𝙉𝙊𝙈𝘽𝙍𝙀 𝘿𝙀 𝙇𝘼 𝘾𝘼𝙉𝘾𝙄𝙊́𝙉 𝙌𝙐𝙀 𝙀𝙎𝙏𝘼𝙎 𝘽𝙐𝙎𝘾𝘼𝙉𝘿𝙊*\n\n𓊈🎧𓊉 ✪⃟🍓─────────────────╮
-𝐄𝐣𝐞𝐦𝐩𝐥𝐨: Play Another Love\n\v\v\v\v\v\v\v\v✪⃟🍓─────────────────╯\n*${usedPrefix + command}* Another love`
-m.react(done) 
+
+var handler = async (m, { conn, command, args, text, usedPrefix }) => {
+
+if (!text) throw `*⚠️ INGRESE EL NOMBRE DE UNA CANCIÓN*\n\n❕ EJEMPLO\n*${usedPrefix + command}* Another love`
+m.react(done)
 try {
 const yt_play = await search(args.join(" "))
 let additionalText = ''
@@ -17,7 +18,7 @@ additionalText = 'VIDEO'}
 let texto1 = `*∘ 📩 DESCARGANDO*
 ${yt_play[0].title}
 
-*∘ ⏰ DURACIÓN:* 
+*∘ ⏰ DURACIÓN* 
 ${secondString(yt_play[0].duration.seconds)}
 
 *∘ 👤 AUTOR*
@@ -35,7 +36,7 @@ text: texto1,
 contextInfo: {
 externalAdReply: {
 title: yt_play[0].title,
-body: packname,
+body: wm2,
 thumbnailUrl: yt_play[0].thumbnail, 
 mediaType: 1,
 showAdAttribution: true,
@@ -75,7 +76,7 @@ let infoo = await ytdl.getInfo('https://youtu.be/' + __res[0].videoId)
 let ress = await ytdl.chooseFormat(infoo.formats, { filter: 'audioonly' })
 conn.sendMessage(m.chat, { audio: { url: ress.url }, fileName: __res[0].title + '.mp3', mimetype: 'audio/mp4' }, { quoted: m })  
 } catch {
-await conn.reply(m.chat, '*[⚠️] ERROR NO PUDE DESCARGAR EL AUDIO*', m)}}}}}
+await conn.reply(m.chat, '*⚠️ ERROR NO PUDE DESCARGAR EL AUDIO*', m)}}}}}
 }  
 if (command == 'play2') {
 try {
@@ -101,13 +102,14 @@ let n3 = lolh.result.size
 let n4 = lolh.result.thumbnail
 await conn.sendMessage(m.chat, { video: { url: n2 }, fileName: `${n}.mp4`, mimetype: 'video/mp4', caption: `▢ 𝚃𝙸𝚃𝚄𝙻𝙾: ${n}\n▢ 𝙿𝙴𝚂𝙾 𝙳𝙴𝙻 𝚅𝙸𝙳𝙴𝙾: ${n3}`, thumbnail: await fetch(n4) }, { quoted: m })
 } catch {
-await conn.reply(m.chat, '*[⚠️] NO FUE POSIBLE DESCARGAR EL VÍDEO*', m)}}}    
+await conn.reply(m.chat, '*⚠️ NO FUE POSIBLE DESCARGAR EL VÍDEO*', m)}}}    
 }} catch {
 throw "*⚠️ ERROR, INTENTALO DE NUEVO*"}
 }
-handler.help = ["play", "play2"].map((v) => v + " < busqueda >")
-handler.tags = ["downloader"]
+handler.help = ['play', 'play2']
+handler.tags = ['descargas']
 handler.command = /^play2?$/i
+
 export default handler
 
 async function search(query, options = {}) {

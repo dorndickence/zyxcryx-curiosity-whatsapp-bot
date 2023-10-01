@@ -35,8 +35,10 @@ ptt: true
 } else throw `*⚠️ RESPONDA CON ${usedPrefix + command} Al AUDIO O NOTA DE VOS QUE DESEA MODIFICAR*`
 } catch (e) {
 throw e
-}}
-handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'].map(v => v + ' [vn]')
+}
+
+}
+handler.help = ['bass', 'blown', 'deep', 'earrape', 'fast', 'fat', 'nightcore', 'reverse', 'robot', 'slow', 'smooth', 'tupai'].map(v => v + '')
 handler.tags = ['audio']
 handler.command = /^(bass|blown|deep|earrape|fas?t|nightcore|reverse|robot|slow|smooth|tupai|squirrel|chipmunk)$/i
 
