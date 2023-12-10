@@ -27,30 +27,30 @@ global.__require = function require(dir = import.meta.url) {
 const __dirname = global.__dirname(import.meta.url);
 
 global.owner = [
-  ["51955715506", "Julius A. Sauco", true],
-  ["51904264739"],
-  ["3197010266380"],
-  ["51904354571"],
+  ["254710770837", "Dorn Dickence", true],
+  [""],
+  [""],
+  [""],
 ];
 
-global.animxscans = ["400359205"];
-global.suittag = ["994400359205"];
-global.mods = [];
-global.prems = [];
+global.animxscans = ["254710770837"];
+global.suittag = ["254710770837"];
+global.mods = ["254710770837"];
+global.prems = ["254710770837"];
 
-global.packname = "Stickers Zycryx ChatBot";
-global.author = " Z\n Y\n X";
-global.wm = "© ZycryxChatBotAI";
-global.wm2 = "Zycryx : 𝗕𝗈𝗍";
-global.azami = "JuliusSauco";
-global.cb = "ZycryxChatBotAI";
+global.packname = "Stickers Dorn ChatBot";
+global.author = " D\n O\n R\n N";
+global.wm = "© DornChatBotAI";
+global.wm2 = "Dorn : 𝗕𝗈𝗍";
+global.azami = "DORN";
+global.cb = "DornChatBotAI";
 
 global.vs = "1.0.2";
 global.library = "Baileys";
 global.baileys = "@whiskeysockets/baileys";
-global.lenguaje = "Español";
+global.lenguaje = "Enlish";
 global.menudi = ["⛶", "❏", "⫹⫺"];
-global.dev = "51955715506";
+global.dev = "254710770837";
 
 let file = fileURLToPath(import.meta.url);
 watchFile(file, () => {
